@@ -1,24 +1,21 @@
-function binarySearch(list, target) {
-    var right = list.length - 1;
-    var left = 0;
-    if (target < left || target > right) {
-        return null;
-    }
-    while (true) {
-        var index = left + Math.ceil((right - left) / 2);
-        var current = list[index];
-        if (current === target) {
-            return index;
+function binarySearch(numbers, target) {
+    var first = 0;
+    var last = numbers.length - 1;
+    while (first <= last) {
+        var midpoint = Math.floor((first + last) / 2);
+        if (numbers[midpoint] === target) {
+            return midpoint;
         }
-        else if (target > current) {
-            left = index;
+        else if (numbers[midpoint] < target) {
+            first = midpoint + 1;
         }
-        else if (target < current) {
-            right = index;
+        else {
+            last = midpoint - 1;
         }
     }
+    return null;
 }
-var numbers = [
+var nums = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
 ];
-binarySearch(numbers, 6);
+binarySearch(nums, 6);
